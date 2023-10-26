@@ -1,0 +1,511 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>{% render 'spdn' %}
+
+
+
+{% include 'kiwiSizing' %}
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K73HX7M');</script>
+<!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  {% if template.name == "collection" %}
+    <link rel="canonical" href="{{ collection.url }}">
+    {% else %}
+    <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+  <meta name="google-site-verification" content="W1Ti1JCC0AWrMfI9mX7cdnTILNbAB6siejvIfo3y7Xs" />
+  <meta name="google-site-verification" content="ZpSwKjUOMfAFJRy2c0I0dNpvs5LUlJ29ADOvQHMpjHs" />
+  <meta name="facebook-domain-verification" content="qfulzn192lb9wbg8rjx340mvp158ol" />
+  {% if current_page != 1 %}<meta name="robots" content="noindex, nofollow" />{% endif %}
+  {% unless current_page != 1 %}
+  <meta name="publisher" content="Milla Dresses"/>
+  <meta name="author" content="Milla Dresses"/>
+  <meta name="copyright" content="Milla Dresses" />
+  <meta name="revisit-after" content="2 days" />
+  {% endunless %}
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/x-icon" />
+  {%- endif -%}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+  <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+  <link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_img_url }}" color="#ff671d">
+
+  <link rel="icon" href="{{ 'android-chrome-192x192.png' | asset_img_url }}" sizes="192x192">
+  <link rel="apple-touch-icon-precomposed" href="{{ 'favicon-32x32.png' | asset_url }}">
+  <meta name="msapplication-TileImage" content="{{ 'favicon-32x32.png' | asset_url }}">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+
+  {%- render 'seo-meta-information' -%}
+  {% comment %}
+  {%- render 'seo-title' -%}
+
+  {%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+{% endcomment %}
+  {%- render 'social-meta-tags' -%}
+
+  <!-- starapps_scripts_start -->
+<!-- This code is automatically managed by StarApps Studio -->
+<!-- Please contact support@starapps.studio for any help -->
+{% include "starapps-language-meta" %}
+<!--<script type="text/javascript" src="https://bcdn.starapps.studio/apps/vsk/millanova/script-1615545546.js?shop={{shop.permanent_domain}}" async></script>-->
+<!-- starapps_scripts_end -->
+{{ content_for_header }}
+
+  {% include 'bold-common' %}
+<script>
+    var theme = {
+      stylesheet: "{{ 'theme.css' | asset_url }}",
+      template: {{ template | json }},
+      routes: {
+        cart: "{{ routes.cart_url }}",
+        cartAdd: "{{ routes.cart_add_url | append: '.js'}}",
+        cartChange: "{{ routes.cart_change_url }}"
+      },
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        regularPrice: {{ 'products.general.regular_price' | t | json }},
+        salePrice: {{ 'products.general.sale_price' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+        willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+        waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+        cartItems: {{ 'cart.general.item_count' | t: count: '[count]' | json }},
+        cartConfirmDelete: {{ 'cart.general.delete_confirm' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+      },
+      settings: {
+        dynamicVariantsEnable: true,
+        cartType: {{ settings.cart_type | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        quickView: {{ settings.quick_shop_enable }},
+        hoverProductGrid: {{ settings.product_hover_image }},
+        themeName: 'Streamline',
+        themeVersion: "3.2.1"
+      }
+    };
+
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  {%- render 'css-variables' -%}
+  {%- render 'critical-css' -%}
+  {%- render 'load-css' -%}
+  <link rel="preload" as="style" href="{{ 'style.css' | asset_url }}" />
+  <link rel="preload" as="style" href="{{ 'bold-currency-picker.css' | asset_url }}" />
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+  <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}"/>
+  <script rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+{% if template.suffix == 'new-year' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  {% endif %}
+  {%- if shop.enabled_currencies.size > 1 -%}
+    <link rel="preload" as="style" href="{{ 'currency-flags.css' | asset_url }}" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'currency-flags.css' | asset_url }}"></noscript>
+  {%- endif -%}
+
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+  {% if template.name == "product" %}
+    <link rel="preload" as="style" href="  {{ 'fancybox.css' | asset_url }}" />
+    {{ 'fancybox.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+
+  <link rel="stylesheet" href="{{ 'style.css' | asset_url }}"/>
+  <link rel="stylesheet" href="{{ 'wss.css' | asset_url }}"/>
+  {% if template.name == "product" %}
+    <link rel="stylesheet" href="{{ 'style-product.css' | asset_url }}"/>
+  {% endif %}
+  <link rel="stylesheet" href="{{ 'product-gift-cart.css' | asset_url }}"/>
+  {{ 'bold-currency-picker.css' | asset_url | stylesheet_tag }}
+  {%- render 'bold-common' -%}
+  {% if template.directory == "customers" %}
+    <link rel="stylesheet" href="{{ 'account-redesign.scss.css' | asset_url }}"/>
+  {% endif %}
+
+
+  <!-- TrustBox script -->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <!-- End TrustBox script -->
+  <script src="{{ 'vendor-v3.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+
+
+  {% if template.name  == "collection" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+  {% endif %}
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  {% if template.name == "product" %}
+    <script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+  {% endif %}
+  {% if template.name == "product" and template.suffix == "gift-card" %}
+    <script src="{{ 'moment.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'moment-timezone-with-data.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'jquery.datetimepicker.full.min.js' | asset_url }}" defer="defer"></script>
+    <link rel="stylesheet" href="{{ 'jquery.datetimepicker.min.css' | asset_url }}"/>
+  {% endif %}
+  <script src="{{ 'wss.js' | asset_url }}" defer="defer"></script>
+  {% if template.directory == "customers" %}
+  <script src="{{ 'account-redesign.js' | asset_url }}" defer="defer"></script>
+  {% endif %}
+  <script src="{{ 'shop-info-popup.js' | asset_url }}"></script>
+  {% comment %}<script src="{{ 'zoomwishlist.js' | asset_url }}" defer="defer"></script>{% endcomment %}
+  <script src="{{ 'masked-input.js' | asset_url }}" defer="defer"></script>
+  <!-- Hotjar Tracking Code for www.itsmilladress.com -->
+  <script>
+    $(document).ready(function (){
+      $('.wss-form_notes input[name="notes__date"]').mask('99.99.99');
+    });
+  </script>
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3404069,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+  
+
+  {% comment %}{% render 'easy-gdpr-settings' %}{% endcomment %}
+{% include 'swift_core' %}
+  
+
+
+  <!-- TrustBox script -->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <!-- End TrustBox script -->
+
+
+  <script src="//staticxx.s3.amazonaws.com/aio_stats_lib_v1.min.js?v=1.0"></script>
+                  {% include 'bss-product-labels-configs' %}
+                    
+	{% comment %}{% capture magic_headers %}{% include 'magiczoomplus.headers' %}{% endcapture %}{% unless magic_headers contains 'Liquid error' %}{{magic_headers}}{% endunless %}{% endcomment %}
+
+{%- render 'asl_snippet' -%}
+{% include 'add_header_assets' %}{% render 'edt_p' %} 
+  {% render 'qikify-apps' %}
+
+  <script src="{{ 'localization-block.js' | asset_url }}"></script>
+</head>
+
+<img alt="icon" width="1400" height="1400" style="pointer-events: none; position: absolute; top: 0; left: 0; width: 99vw; height: 99vh; max-width: 99vw; max-height: 99vh;"  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI5OTk5OXB4IiBoZWlnaHQ9Ijk5OTk5cHgiIHZpZXdCb3g9IjAgMCA5OTk5OSA5OTk5OSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBzdHJva2U9Im5vbmUiIGZpbGw9Im5vbmUiIGZpbGwtb3BhY2l0eT0iMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9Ijk5OTk5IiBoZWlnaHQ9Ijk5OTk5Ij48L3JlY3Q+IDwvZz4gPC9zdmc+"></head>
+<style>
+  @media screen and ( max-width: 480px ) {
+    .slide-nav .tmenu_item_level_0.tmenu_item_has_child.tmenu_item_active > .tmenu_submenu { height: 80%; overflow-y: auto; }
+  }
+  .overflow-scroller .show-more-block .show-more-text:after,
+  .mobile-product-slider .mobile-product-slider-list .show-more-text:after{
+    background-image: url("{{ 'show-more-arrow.svg' | asset_url }}");
+  }
+  .template-suffix-gift-card .gift-card-checkbox-wrapper input[type="checkbox"]:checked:after,
+  .account-redesign .address-popup-content .checkbox-wrapper input:checked:after{
+    background-image: url("{{ 'checkmark.svg' | asset_url }}");
+  }
+  .template-suffix-gift-card .gift-card-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator{
+    background-image: url("{{ 'calendar.svg' | asset_url }}");
+  }
+</style>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-suffix-{{ template.suffix | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if settings.cart_type == 'sticky' and cart.item_count > 0 and template != 'cart' %} body--sticky-cart-open{% endif %}{% if cart.item_count > 0 %} cart-has-items{% endif %} {% if template.directory == "customers" %}account-redesign{% endif %}" ontouchstart="return true;" data-transitions="{{settings.animate_page_transitions}}" data-animate_underlines="true" data-animate_images="{{ settings.animate_images }}" data-button_style="{{settings.button_style}}" data-type_product_capitalize="{{settings.type_product_capitalize}}" data-type_header_capitalize="{{settings.type_header_capitalize}}" data-product_image_scatter="{{settings.product_image_scatter}}" data-button_type_style="{{settings.button_type_style}}">
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K73HX7M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+<script
+  async
+  src="https://na-library.klarnaservices.com/lib.js"
+  data-client-id="19ce5701-dc9b-5e52-9c5a-6e686cf53d0d"
+></script>
+
+  <div id="OverscrollLoader" class="overscroll-loader" aria-hidden="true">
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--full-color icon-loader--full-color"><path class="icon-loader__close" d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/><path class="icon-loader__path" d="M40 90a40 40 0 1 1 20 0"/></svg>
+  </div>
+
+  <div class="root">
+
+    {%- if settings.animate_page_transitions -%}
+      <script>window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>
+    {%- endif -%}
+
+    {%- liquid
+      assign loader_size = settings.desktop_loader_width | append: 'x'
+      assign loader_size_mobile = settings.mobile_loader_width | append: 'x'
+    -%}
+
+    <div class="splash-screen">
+      {%- if settings.logo_loader_image != blank -%}
+        <div class="splash-screen__loader">
+          <img
+            class="loader-logo__img"
+            src="{{ settings.logo_loader_image | img_url: loader_size }}"
+            srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+            aria-hidden="true">
+        </div>
+      {%- else -%}
+        <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+      {%- endif -%}
+    </div>
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    <div id="PageContainer" class="page-container">
+      <div class="transition-body">
+        {%- section 'header' -%}
+
+        <main class="main-content {% if template == 'product' %}product-page{% endif %}" id="MainContent">
+          {{ content_for_layout }}
+        </main>
+
+        {%- section 'social' -%}
+        {%- section 'footer' -%}
+      </div>
+    </div>
+
+      <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "{{ shop.name }}",
+            "telephone": "{{ shop.phone }}",
+            "email": "{{ shop.email }}",
+            "logo": "https://cdn.shopify.com/s/files/1/0477/2131/6519/files/logo_c42c1d59-011e-48d0-b601-1139e8b8fa4c.png?v=1630582926",
+            "address": {
+                "@type": "PostalAddress",
+                "name": "{{shop.address | format_address | remove: '</p>' | remove: '<p>' | remove: '<br>'}}"
+             }, 
+            "sameAs": [
+              {{ settings.social_facebook_link | json }},
+              {{ settings.social_pinterest_link | json }},
+              {{ settings.social_instagram_link | json }},
+              {{ settings.social_tiktok_link | json }}
+            ],
+            "url": {{ request.origin | append: page.url | json }}
+          }
+      </script>
+
+    {%- section 'newsletter-popup' -%}
+    {%- section 'popup-for_collection' -%}
+    {%- section 'popup-for_products' -%}
+    {%- section 'popup-for_sale' -%}
+
+
+    {%- section 'popup-for_cart' -%}
+
+    {%- render 'video-modal' -%}
+    {%- if settings.animate_page_transition_style == 'page-logo' -%}
+      <div class="loader-logo">
+        {%- if settings.logo_loader_image != blank -%}
+          <div class="splash-screen__loader">
+            <img
+              class="loader-logo__img"
+              src="{{ settings.logo_loader_image | img_url: loader_size }}"
+              srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+              aria-hidden="true">
+          </div>
+        {%- else -%}
+          <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+  <div id="ProductScreens"></div>
+  {%- render 'photoswipe-template' -%}
+  {%- if settings.cart_type == 'drawer' -%}
+    {%- render 'cart-drawer' -%}
+  {%- endif -%}
+  {%- render 'bold-currency-converter' -%}
+
+{% if 1 == 0 %}
+
+  {{ 'ndnapps-sociallogin.css' | asset_url | stylesheet_tag }}
+  {% if shop.customer_accounts_enabled %}{% unless customer  %}{{ 'ndnapps-sociallogin-script.js' | asset_url | script_tag }}{% endunless %}{% endif %}
+
+{% endif %}
+
+{% include 'swymSnippet' %}
+<!-- {% include 'swym-collections-script' %} -->
+
+
+
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+{% include 'ajax-cart-template' %}
+{{ 'ajax-cart.js' | asset_url | script_tag }}
+
+<script>
+  $(document).ready(function (){
+
+    jQuery(function($) {
+      ajaxCart.init({
+        formSelector: 'form[action="/cart/add"], .grid-product__add-to-cart-form, .product-single__form, .wss_form_product',
+        cartContainer: '#CartContainer',
+        addToCartSelector: 'button[type="submit"]',
+        cartCountSelector: '.header__in-cart',
+        cartCostSelector: '.CartCost',
+        moneyFormat: {{ shop.money_format | json }},
+        onToggleCallback: function(cart) {
+          Currency.convertAll(shopCurrency, Currency.currentCurrency);
+          jQuery('.selected-currency').text(Currency.currentCurrency);
+        }
+      });
+    });
+
+    $(document).on('click', '.add-to-cart:not(.modal-wss__sale)',  function (e){
+
+      ajaxCart.load();
+
+      setTimeout(ajaxCart.load(), 1500);
+      setTimeout(ajaxCart.load, 1500);
+      setTimeout(function(){
+      $('body').toggleClass("iscartpopup");
+      }, 800);
+
+      
+
+    });
+
+    // if($(window).width() >= 1200){
+    //
+    //   var isResizeble = false;
+    //
+    //   $(".site-header__cart").hover(function(e) {
+    //     if(!isResizeble) {
+    //
+    //       ajaxCart.load();
+    //
+    //       isRezeble = true;
+    //       // $('body').addClass("iscartpopup");
+    //       e.preventDefault();
+    //     }
+    //   },function() {
+    //     setTimeout(function(e) {
+    //       if(!($('.site-header__cart:hover').length > 0) )
+    //               // $('body').removeClass("iscartpopup");
+    //         isRezeble = false;
+    //
+    //     }, 300);
+    //
+    //   });
+    //
+    // }
+    // else{
+    //   $(document).on("click", '.site-header__cart.wss_table-vissible', function(e) {
+    //     ajaxCart.load();
+    //     $('body').addClass("iscartpopup");
+    //     e.preventDefault();
+    //   });
+    //   $(document).on("click", ".close-cart", function(e){
+    //     $('body').removeClass("iscartpopup");
+    //     e.preventDefault();
+    //   });
+    // }
+
+    $(window).resize(function () {
+      if($(window).width() >= 1200){
+
+        var isResizeble = false;
+
+        $(".site-header__cart").hover(function(e) {
+          if(!isResizeble) {
+
+            ajaxCart.load();
+
+            isRezeble = true;
+            // $('body').addClass("iscartpopup");
+            e.preventDefault();
+          }
+        },function() {
+          setTimeout(function(e) {
+            if(!($('.site-header__cart:hover').length > 0) )
+                    // $('body').removeClass("iscartpopup");
+              isRezeble = false;
+
+          }, 300);
+
+        });
+
+      }
+      else{
+        /*
+        $(document).on("click", '.site-header__cart.wss_table-vissible', function(e) {
+          ajaxCart.load();
+          $('body').addClass("iscartpopup");
+          e.preventDefault();
+        });
+        $(document).on("click", ".close-cart", function(e){
+          $('body').removeClass("iscartpopup");
+          e.preventDefault();
+        });*/
+      }
+    });
+  });
+</script>
+{% render 'ajaxify-cart'%}
+
+
+  {% capture notification %}{% render 'translation-lab-theme-editor-notification' %}{% endcapture %}{% unless notification contains "Liquid error" %}{{ notification }}{% endunless %}
+
+
+{% comment %}{% endcomment %}
+<input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/><input type="hidden" name="aaaformbuilder_customer_logged_id" value="{{customer.id}}" id="aaaformbuilder_customer_logged_id">
+
+<!--Gorgias Chat Widget Start-->
+<script id="gorgias-chat-widget-install-v3" 
+    src="https://config.gorgias.chat/bundle-loader/01GYCCCK0JZ8Y9ZJM0DS67QVPE?source=shopify1click">
+</script>
+<script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});
+</script>
+<!--Gorgias Chat Widget End-->
+{% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% endif %}{% render "easystock" %} 
+  <div class="index-section--flush powr-popup" id="5399990b_1651829413"></div>
+  <div class="index-section--flush powr-popup" id="295a5570_1651848429"></div>
+
+ {% include 'subscribe-it-helper' %}
+{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
+
+  <script src="https://cdn.static.kiwisizing.com/SizingPlugin.prod.js?v=308&shop=millanova.myshopify.com"></script>
+{% include 'add_footer_assets' %}
+<!-- **BEGIN** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
+    {% render 'hextom_ctb_main', product: product, customer: customer %}
+    <!-- **END** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
+ {% include 'smile-initializer' %}
+
+<script>var check_edd_data_from_liquid = '1';</script>{% render 'edd_read_data_from_liquid' %}
+
+  <!-- PickyStory snippet "main_widget_script", do not modify. Safe to remove after the app is uninstalled -->
+  {% if content_for_header contains 'pickystory' %}
+    <script defer src="https://cdn.pickystory.com/widget/dist/latest/pickystory-widget.min.js"></script>
+  {% endif %}
+  <!-- PickyStory end snippet "main_widget_script" -->
+</body>
+</html>
