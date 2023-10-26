@@ -361,6 +361,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {{ 'handlebars.min.js' | asset_url | script_tag }}
 {% include 'ajax-cart-template' %}
 {{ 'ajax-cart.js' | asset_url | script_tag }}
+{{ 'video-lazy-load.js' | asset_url | script_tag }}
+{%- unless content_for_header contains "Shopify.designMode" %}
+{{ 'markets.js' | asset_url | script_tag }}
+{% endunless -%}
+
 
 <script>
   $(document).ready(function (){
@@ -379,9 +384,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
     });
-
+/*
     $(document).on('click', '.add-to-cart:not(.modal-wss__sale)',  function (e){
-
       ajaxCart.load();
 
       setTimeout(ajaxCart.load(), 1500);
@@ -389,11 +393,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       setTimeout(function(){
       $('body').toggleClass("iscartpopup");
       }, 800);
-
-      
-
     });
-
+*/
     // if($(window).width() >= 1200){
     //
     //   var isResizeble = false;
